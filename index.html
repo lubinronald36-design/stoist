@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>My Story</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <style>
         body {
             margin: 0;
@@ -49,18 +48,29 @@
             opacity: 0.8;
             margin-top: 10px;
         }
+
+        #playBg {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            background-color: #ff6f61;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #playBg:hover {
+            background-color: #ff3b2f;
+        }
     </style>
 </head>
-
 <body>
 
-    <!-- Background Music -->
-    <audio id="bgMusic" autoplay loop>
-        <source src="beat4.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="container">
-       <img src="https://via.placeholder.com/800x350?text=My+Story" alt="Story image">
+
+        <!-- Placeholder thumbnail -->
+        <img src="https://via.placeholder.com/800x350?text=My+Story" alt="Story image">
 
         <h1>My Story</h1>
 
@@ -70,7 +80,16 @@
             Let the music guide you while the words speak.
         </p>
 
-        <!-- Story Voice -->
+        <!-- Button to start background music -->
+        <button id="playBg">▶️ Play Background Music</button>
+
+        <!-- Background music -->
+        <audio id="bgMusic" loop>
+            <source src="beat4.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+
+        <!-- Story voice -->
         <audio controls>
             <source src="stoi.mp3" type="audio/mpeg">
             Your browser does not support audio.
@@ -79,12 +98,18 @@
         <div class="note">
             🔊 Tip: Use headphones for a better experience
         </div>
+
     </div>
 
     <script>
-        // Lower background music volume
         const bg = document.getElementById("bgMusic");
-        bg.volume = 0.15;
+        const btn = document.getElementById("playBg");
+
+        btn.addEventListener("click", () => {
+            bg.volume = 0.15; // lower volume
+            bg.play();
+            btn.style.display = "none"; // hide button after click
+        });
     </script>
 
 </body>
