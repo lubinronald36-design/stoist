@@ -1,0 +1,95 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Story</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .note {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <img src="thumbnail.jpg" alt="Story image">
+
+        <h1>My Story</h1>
+
+        <p>
+            This story is told with my own voice.
+            Take a moment, breathe, and listen.
+            Let the music guide you while the words speak.
+        </p>
+
+        <!-- Story Voice -->
+        <audio controls>
+            <source src="voice.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+
+        <div class="note">
+            🔊 Tip: Use headphones for a better experience
+        </div>
+    </div>
+
+    <script>
+        // Lower background music volume
+        const bg = document.getElementById("bgMusic");
+        bg.volume = 0.15;
+    </script>
+
+</body>
+</html>
