@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,21 +51,6 @@
             opacity: 0.8;
             margin-top: 10px;
         }
-
-        #playBg {
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: none;
-            background-color: #ff6f61;
-            color: white;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        #playBg:hover {
-            background-color: #ff3b2f;
-        }
     </style>
 </head>
 <body>
@@ -76,12 +64,8 @@
 
         <p>
             This story is told with my own voice.
-            Take a moment, breathe, and listen.
             Let the music guide you while the words speak.
         </p>
-
-        <!-- Button to start background music -->
-        <button id="playBg">▶️ Play Background Music</button>
 
         <!-- Background music -->
         <audio id="bgMusic" loop>
@@ -90,7 +74,7 @@
         </audio>
 
         <!-- Story voice -->
-        <audio controls>
+        <audio id="storyVoice">
             <source src="stoi.mp3" type="audio/mpeg">
             Your browser does not support audio.
         </audio>
@@ -103,13 +87,24 @@
 
     <script>
         const bg = document.getElementById("bgMusic");
-        const btn = document.getElementById("playBg");
+        const story = document.getElementById("storyVoice");
 
-        btn.addEventListener("click", () => {
-            bg.volume = 0.15; // lower volume
-            bg.play();
-            btn.style.display = "none"; // hide button after click
-        });
+        // Set volumes
+        bg.volume = 0.15;      // soft background
+        story.volume = 0.85;   // main story voice
+
+        // Try autoplay
+        function playBoth() {
+            bg.play().catch(() => console.log("Background music autoplay blocked"));
+            story.play().catch(() => console.log("Story voice autoplay blocked"));
+        }
+
+        // Auto play on load
+        window.addEventListener('load', playBoth);
+
+        // Mobile fallback: play on first user interaction
+        document.body.addEventListener('click', playBoth, { once: true });
+        document.body.addEventListener('touchstart', playBoth, { once: true });
     </script>
 
 </body>
